@@ -14,7 +14,12 @@ JACOB 开源项目提供的是一个 JVM 独立的自动化服务器实现，其
 
 ![](https://github.com/scalad/JacobMathType/blob/master/doc/image/image001.jpg)
 
-把jacob下载下来以后解压，里面有两个文件一个是dll另一个是jar文件。将dll文件放入C:/WINDOWS/system32下面，然后把jar文件加入你要用的工程里面就可以使用jacob了.
+把jacob下载下来以后解压，里面有两个文件一个是dll另一个是jar文件。将dll文件放入C:/WINDOWS/system32下面或者是jdk所在的路径下，然后把jar文件加入你要用的工程里面就可以使用jacob了.
+
+![](https://github.com/scalad/JacobMathType/blob/master/doc/image/jacob_path.png)
 
 要使用jacob重要的是要理解VBA的用法，因为jacob其实就是VBA的一个java接口，它提供了一种方法让你可以调用VBA。所以在你要是VBA以前最好先去MSDN上面查看一下office 的reference 上面有一个文档如何创建，打开，保存关闭等功能。我在学习jacob用法的时候就是因为不懂VBA，在哪里胡乱的试，浪费了不少时间。最后还是在msdn上才找到了我要的东西。所以你要用jacob一定要先了解VBA。
+
+jacob用来调用实现COM接口的dll。根据分析jacob提供的类，发现com.jacob.com.Dispatch有invoke方法。可以猜到使用java反射机制的方式调用dll。那么你只要dll的api，以传入类名、方法名、参数方式就可以调用dll。
+
 
