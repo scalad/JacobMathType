@@ -19,7 +19,6 @@ public class MSWordManager {
 
 	private boolean saveOnExit = true;
 
-	/** */
 	/**
 	 * 
 	 * @param visible
@@ -34,7 +33,6 @@ public class MSWordManager {
 			documents = word.getProperty("Documents").toDispatch();
 	}
 
-	/** */
 	/**
 	 * 设置退出时参数
 	 * 
@@ -45,7 +43,6 @@ public class MSWordManager {
 		this.saveOnExit = saveOnExit;
 	}
 
-	/** */
 	/**
 	 * 创建一个新的word文档
 	 * 
@@ -55,7 +52,6 @@ public class MSWordManager {
 		selection = Dispatch.get(word, "Selection").toDispatch();
 	}
 
-	/** */
 	/**
 	 * 打开一个已存在的文档
 	 * 
@@ -67,7 +63,6 @@ public class MSWordManager {
 		selection = Dispatch.get(word, "Selection").toDispatch();
 	}
 
-	/** */
 	/**
 	 * 把选定的内容或插入点向上移动
 	 * 
@@ -109,7 +104,6 @@ public class MSWordManager {
 		}
 	}
 
-	/** */
 	/**
 	 * 把选定的内容或者插入点向右移动
 	 * 
@@ -123,7 +117,6 @@ public class MSWordManager {
 			Dispatch.call(selection, "MoveRight");
 	}
 
-	/** */
 	/**
 	 * 把插入点移动到文件首位置
 	 * 
@@ -140,7 +133,6 @@ public class MSWordManager {
 		Dispatch.call(selection, "EndKey", new Variant(6));
 	}
 
-	/** */
 	/**
 	 * 从选定内容或插入点开始查找文本
 	 * 
@@ -167,7 +159,6 @@ public class MSWordManager {
 		return Dispatch.call(find, "Execute").getBoolean();
 	}
 
-	/** */
 	/**
 	 * 把选定选定内容设定为替换文本
 	 * 
@@ -184,7 +175,6 @@ public class MSWordManager {
 		return true;
 	}
 
-	/** */
 	/**
 	 * 全局替换文本
 	 * 
@@ -200,7 +190,6 @@ public class MSWordManager {
 		}
 	}
 
-	/** */
 	/**
 	 * 在当前插入点插入字符串
 	 * 
@@ -211,7 +200,6 @@ public class MSWordManager {
 		Dispatch.put(selection, "Text", newText);
 	}
 
-	/** */
 	/**
 	 * 
 	 * @param toFindText
@@ -227,7 +215,6 @@ public class MSWordManager {
 		return true;
 	}
 
-	/** */
 	/**
 	 * 全局替换图片
 	 * 
@@ -243,7 +230,6 @@ public class MSWordManager {
 		}
 	}
 
-	/** */
 	/**
 	 * 在当前插入点插入图片
 	 * 
@@ -254,7 +240,6 @@ public class MSWordManager {
 		Dispatch.call(Dispatch.get(selection, "InLineShapes").toDispatch(), "AddPicture", imagePath);
 	}
 
-	/** */
 	/**
 	 * 合并单元格
 	 * 
@@ -276,7 +261,6 @@ public class MSWordManager {
 		Dispatch.call(fstCell, "Merge", secCell);
 	}
 
-	/** */
 	/**
 	 * 在指定的单元格里填写数据
 	 * 
@@ -295,7 +279,6 @@ public class MSWordManager {
 		Dispatch.put(selection, "Text", txt);
 	}
 
-	/** */
 	/**
 	 * 在当前文档拷贝数据
 	 * 
@@ -309,7 +292,6 @@ public class MSWordManager {
 		}
 	}
 
-	/** */
 	/**
 	 * 在当前文档粘帖剪贴板数据
 	 * 
@@ -323,7 +305,6 @@ public class MSWordManager {
 		}
 	}
 
-	/** */
 	/**
 	 * 在当前文档指定的位置拷贝表格
 	 * 
@@ -343,7 +324,6 @@ public class MSWordManager {
 		}
 	}
 
-	/** */
 	/**
 	 * 在当前文档末尾拷贝来自另一个文档中的段落
 	 * 
@@ -358,7 +338,6 @@ public class MSWordManager {
 		copyParagraphFromAnotherDoc(anotherDocPath, paragraphIndex, "$selection$");
 	}
 
-	/** */
 	/**
 	 * 在当前文档指定的位置拷贝来自另一个文档中的段落
 	 * 
@@ -392,7 +371,6 @@ public class MSWordManager {
 		}
 	}
 
-	/** */
 	/**
 	 * 在当前文档指定的位置拷贝来自另一个文档中的表格
 	 * 
@@ -425,7 +403,6 @@ public class MSWordManager {
 		}
 	}
 
-	/** */
 	/**
 	 * 在当前文档指定的位置拷贝来自另一个文档中的图片
 	 * 
@@ -458,7 +435,6 @@ public class MSWordManager {
 		}
 	}
 
-	/** */
 	/**
 	 * 创建表格
 	 * 
@@ -480,7 +456,6 @@ public class MSWordManager {
 		// }
 	}
 
-	/** */
 	/**
 	 * 在指定行前面增加行
 	 * 
@@ -500,7 +475,6 @@ public class MSWordManager {
 		Dispatch.call(rows, "Add", new Variant(row));
 	}
 
-	/** */
 	/**
 	 * 在第1行前增加一行
 	 * 
@@ -518,7 +492,6 @@ public class MSWordManager {
 		Dispatch.call(rows, "Add", new Variant(row));
 	}
 
-	/** */
 	/**
 	 * 在最后1行前增加一行
 	 * 
@@ -536,7 +509,6 @@ public class MSWordManager {
 		Dispatch.call(rows, "Add", new Variant(row));
 	}
 
-	/** */
 	/**
 	 * 增加一行
 	 * 
@@ -552,7 +524,6 @@ public class MSWordManager {
 		Dispatch.call(rows, "Add");
 	}
 
-	/** */
 	/**
 	 * 增加一列
 	 * 
@@ -570,7 +541,6 @@ public class MSWordManager {
 		Dispatch.call(cols, "AutoFit");
 	}
 
-	/** */
 	/**
 	 * 在指定列前面增加表格的列
 	 * 
@@ -593,7 +563,6 @@ public class MSWordManager {
 		Dispatch.call(cols, "AutoFit");
 	}
 
-	/** */
 	/**
 	 * 在第1列前增加一列
 	 * 
@@ -611,7 +580,6 @@ public class MSWordManager {
 		Dispatch.call(cols, "AutoFit");
 	}
 
-	/** */
 	/**
 	 * 在最后一列前增加一列
 	 * 
@@ -629,7 +597,6 @@ public class MSWordManager {
 		Dispatch.call(cols, "AutoFit");
 	}
 
-	/** */
 	/**
 	 * 自动调整表格
 	 * 
@@ -644,7 +611,6 @@ public class MSWordManager {
 		}
 	}
 
-	/** */
 	/**
 	 * 调用word里的宏以调整表格的宽度,其中宏保存在document下
 	 * 
@@ -662,7 +628,6 @@ public class MSWordManager {
 		}
 	}
 
-	/** */
 	/**
 	 * 设置当前选定内容的字体
 	 * 
@@ -687,7 +652,6 @@ public class MSWordManager {
 		Dispatch.put(font, "Size", size);
 	}
 
-	/** */
 	/**
 	 * 文件保存或另存为
 	 * 
@@ -698,7 +662,6 @@ public class MSWordManager {
 		Dispatch.call((Dispatch) Dispatch.call(word, "WordBasic").getDispatch(), "FileSaveAs", savePath);
 	}
 
-	/** */
 	/**
 	 * 关闭当前word文档
 	 * 
@@ -711,7 +674,6 @@ public class MSWordManager {
 		}
 	}
 
-	/** */
 	/**
 	 * 关闭全部应用
 	 * 
@@ -726,7 +688,6 @@ public class MSWordManager {
 		documents = null;
 	}
 
-	/** */
 	/**
 	 * 打印当前word文档
 	 * 

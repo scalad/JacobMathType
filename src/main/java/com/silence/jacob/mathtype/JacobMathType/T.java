@@ -4,7 +4,7 @@ public class T {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		MSWordManager ms = new MSWordManager(true);
+		MSWordManager ms = new MSWordManager(false);
 		// 生成一个MSwordManager对象,并且设置显示Word程序
 		ms.createNewDocument();
 		// 创建一个新的.doc文件
