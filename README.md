@@ -47,7 +47,7 @@ MathType与Office文档完美结合，显示效果超好，比Office自带的公
 
 ![](https://github.com/scalad/JacobMathType/blob/master/doc/image/mathType_word.png)
 
-接下来我们演示如何使用Jacob如何调用MathType的API
+接下来我们演示如何使用Jacob如何调用MathType的API，开始之前，请确保Window服务中`DCom Server Process Launcher`这个服务已经开启，不然等下会报错`com.jacob.com.ComFailException: Can't co-create object`.
 
 ### 具体操作 ###
 #### 1、初始化com线程 ####

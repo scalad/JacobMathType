@@ -1,9 +1,12 @@
 package com.silence.jacob.word;
 
+import java.io.IOException;
+
 import com.jacob.activeX.ActiveXComponent;
 import com.jacob.com.ComThread;
 import com.jacob.com.Dispatch;
 import com.jacob.com.Variant;
+import com.sience.jacob.util.Utils;
 
 public class WordTranslation {
 
@@ -28,10 +31,16 @@ public class WordTranslation {
 		ComThread.Release();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		Utils.loadLibrary(System.getProperty("user.dir"));
+		//初始化COM线程
+		ComThread.InitSTA();
+		ActiveXComponent mathTypeApp = new ActiveXComponent("Equation.DSMT4");
+		Dispatch  dispatch = mathTypeApp.getObject();
 		
-		ActiveXComponent mathTypeApp = new ActiveXComponent("DSEquations");
-		
-		
+		Variant v = Dispatch.call(dispatch, "DefaultIcon");
+	    System.out.println(v);
+		//释放com线程
+		ComThread.Release();
 	}
 }
