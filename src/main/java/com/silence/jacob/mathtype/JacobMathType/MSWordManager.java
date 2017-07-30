@@ -703,7 +703,10 @@ public class MSWordManager {
 		MSWordManager msWordManager = new MSWordManager(true);
 		msWordManager.createNewDocument();
 
-		msWordManager.insertText("aaaaaaaaaaaaaaaaaaaaa");
+		String latex = "$$\\sqrt {{a^2} + {b^2}} *3$$";
+		
+		msWordManager.insertText(latex);
+	
 		msWordManager.moveEnd();
 
 		msWordManager.close();

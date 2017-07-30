@@ -1,5 +1,6 @@
 # JacobMathType
 
+### Jacob ###
 JACOB是一个 Java到微软的COM接口的桥梁。使用JACOB允许任何JVM访问COM对象，从而使JAVA应用程序能够调用COM对象。如果你要对 MS Word、Excel 进行处理，JACOB 是一个好的选择。JACOB目前已经成为sourceforge[https://sourceforge.net/projects/jacob-project/?source=directory](https://sourceforge.net/projects/jacob-project/?source=directory)的一个开源项目，官网地址为[http://danadler.com/jacob/](http://danadler.com/jacob/),现在最新的版本是jacob-1.18,你可以在[https://sourceforge.net/projects/jacob-project/](https://sourceforge.net/projects/jacob-project/)上找到最新的jacob.jar包和jacob.dll库,使用的时候还需要注意这两个东西的版本需要一致，而且还分32位和64位的，它的位数和JDK的位数有关，和操作系统的位数无关。
 
 ### 早期绑定和晚期绑定 ###
@@ -38,4 +39,31 @@ jacob用来调用实现COM接口的dll。根据分析jacob提供的类，发现c
 以上方法中有的有很多重载方法，调用不同的方法时需要放置不同的参数，至于哪些参数代表什么意思，具体放什么值，就需要参考vba代码了，仅靠jacob是无法进行变成的。 
 
 **Variant对象的toDispatch()方法**：将以上方法返回的Variant类型转换为Dispatch，进行下一次链式操作 
+
+### MathType ###
+MathType 是由美国Design Science公司开发的功能强大的数学公式编辑器，它同时支持Windows和Macintosh 操作系统，与常见的文字处理软件和演示程序配合使用，能够在各种文档中加入复杂的数学公式和符号.
+
+MathType与Office文档完美结合，显示效果超好，比Office自带的公式编辑器要强大很多,关于MathType的安装这里不再介绍，安装完之后MathType犹如一个插件嵌入在Word中，如下图：
+
+![](https://github.com/scalad/JacobMathType/blob/master/doc/image/mathType_word.png)
+
+接下来我们演示如何使用Jacob如何调用MathType的API
+
+### 具体操作 ###
+#### 1、初始化com线程 ####
+
+使用jacob之前使用下面的语句来初始化com线程，大概意思是打开冰箱门，准备放大象
+```Java
+ComThread.InitSTA(); 
+```
+
+使用完成后使用下面的语句来关闭现场,大概意思是关上冰箱门
+
+```
+ComThread.Release();
+```
+#### 2、创建应用程序对象，设置参数，得到文档集合 ####
+操作一个文档之前，我们必须要创建一个应用对应，比如是word还是excel，设置一些文档应用的参数，得到文档集合对象，（大家应该知道word是Documents，excel是WorkBooks）
+
+
 
