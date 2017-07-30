@@ -40,7 +40,7 @@ jacob用来调用实现COM接口的dll。根据分析jacob提供的类，发现c
 
 **Variant对象的toDispatch()方法**：将以上方法返回的Variant类型转换为Dispatch，进行下一次链式操作 
 
-### MathType ###
+### MathType数学公式编辑器 ###
 MathType 是由美国Design Science公司开发的功能强大的数学公式编辑器，它同时支持Windows和Macintosh 操作系统，与常见的文字处理软件和演示程序配合使用，能够在各种文档中加入复杂的数学公式和符号.
 
 MathType与Office文档完美结合，显示效果超好，比Office自带的公式编辑器要强大很多,关于MathType的安装这里不再介绍，安装完之后MathType犹如一个插件嵌入在Word中，如下图：
@@ -63,7 +63,19 @@ ComThread.InitSTA();
 ComThread.Release();
 ```
 #### 2、创建应用程序对象，设置参数，得到文档集合 ####
-操作一个文档之前，我们必须要创建一个应用对应，比如是word还是excel，设置一些文档应用的参数，得到文档集合对象，（大家应该知道word是Documents，excel是WorkBooks）
+操作一个文档之前，我们必须要创建一个应用对应，比如是mathType，或者是word还是excel，设置一些文档应用的参数，得到文档集合对象，（大家应该知道word是Documents，excel是WorkBooks）
 
+```Java
+//word
+ActiveXComponent wordApp = new ActiveXComponent("Word.Application");
+//excel
+ActiveXComponent wordApp = new ActiveXComponent("Excel.Application");
+//设置应用操作是文档不在明面上显示，只在后台静默处理。  
+wordApp.setProperty("Visible", new Variant(false));  
+//MathType
+ActiveXComponent mathTypeApp = new ActiveXComponent("DSEquations");
+```
 
+上面的MathType的DSEquations不是控件的名字，而是CLSID，或者叫progID,就是控件id，这个是从哪里得到的呢？需要到注册表去查找（**不要问我怎么知道这个的，我也不知道**）。在HKEY_CLASSES_ROOT下查找你的控件名，当找到时，在其文件夹下找到progID项，即可看到它的CLSID.如果CLSID不对，会报如下异常： com.jacob.com.ComFailException: Can't get object clsid from progid。DSEquations的位置在注册表中如下图：
 
+![](https://github.com/scalad/JacobMathType/blob/master/doc/image/regedit_mathtype.png)
