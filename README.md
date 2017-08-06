@@ -71,11 +71,5 @@ ActiveXComponent wordApp = new ActiveXComponent("Word.Application");
 //excel
 ActiveXComponent wordApp = new ActiveXComponent("Excel.Application");
 //设置应用操作是文档不在明面上显示，只在后台静默处理。  
-wordApp.setProperty("Visible", new Variant(false));  
-//MathType
-ActiveXComponent mathTypeApp = new ActiveXComponent("DSEquations");
+wordApp.setProperty("Visible", new Variant(false));
 ```
-
-上面的MathType的DSEquations不是控件的名字，而是CLSID，或者叫progID,就是控件id，这个是从哪里得到的呢？需要到注册表去查找（**不要问我怎么知道这个的，我也不知道**）。在HKEY_CLASSES_ROOT下查找你的控件名，当找到时，在其文件夹下找到progID项，即可看到它的CLSID.如果CLSID不对，会报如下异常： com.jacob.com.ComFailException: Can't get object clsid from progid。DSEquations的位置在注册表中如下图：
-
-![](https://github.com/scalad/JacobMathType/blob/master/doc/image/regedit_mathtype.png)
